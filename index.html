@@ -3,139 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso al Sistema - Tech Edition</title>
+    <title>Portal de Hacienda - Atención al Contribuyente</title>
     <style>
-        /* Estilos base con fondo de tecnología */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Imagen de fondo tecnológica de alta calidad */
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            /* Fondo tecnológico institucional */
+            background: linear-gradient(rgba(10, 30, 60, 0.8), rgba(10, 30, 60, 0.8)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* Barra de navegación superior */
+        header {
+            width: 100%;
+            padding: 1rem 5%;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.95); /* Ligeramente transparente */
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 350px;
-            backdrop-filter: blur(5px);
-        }
-
-        h2 {
-            text-align: center;
-            color: #1a1a1a;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
         }
 
-        .input-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #444;
-            font-weight: bold;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        .input-group input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        button {
-            width: 100%;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 6px;
-            background-color: #007bff;
+        /* Apartado Administrativo arriba a la derecha */
+        .admin-link {
+            background: #e74c3c;
             color: white;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-            transform: translateY(-1px);
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        a {
-            color: #007bff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
             text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid transparent;
         }
-    </style>
-</head>
-<body>
 
-    <div class="login-container">
-        <h2>SISTEMA TECH</h2>
-        
-        <form id="loginForm">
-            <div class="input-group">
-                <label for="username">Usuario</label>
-                <input type="text" id="username" placeholder="Escribe admin" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" placeholder="Escribe admin" required>
-            </div>
-            
-            <button type="submit">INGRESAR</button>
-        </form>
+        .admin-link:hover {
+            background: transparent;
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
 
-        <div class="footer">
-            <p><a href="#">¿Olvidaste tu contraseña?</a></p>
-        </div>
-    </div>
+        /* Contenedor principal */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 5%;
+            text-align: center;
+        }
 
-    <script>
-        // Lógica de validación
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita que la página se recargue
+        .welcome-text {
+            margin-bottom: 3rem;
+        }
 
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
+        .welcome-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
-            // Validación solicitada
-            if (user === "admin" && pass === "admin") {
-                alert("¡Acceso concedido! Bienvenido Administrador.");
-                // Aquí podrías redireccionar: window.location.href = "dashboard.html";
-            } else {
-                alert("Usuario o contraseña incorrectos. Intenta de nuevo.");
-            }
-        });
-    </script>
-
-</body>
-</html>
+        /* Tarjeta de Login para el Contribuyente */
+        .contribuyente-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4
